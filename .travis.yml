@@ -1,8 +1,11 @@
 language: python
 python:
-  - "2.6"
   - "2.7"
+  - "3.3"
 before_script:
   - chmod 755 bin/install_jmeter.py
 script:
   - python bin/install_jmeter.py
+  - chmod +x apache-jmeter-2.10/bin/jmeter.sh
+  - rm -rf results && mkdir results
+  - apache-jmeter-2.10/bin/jmeter.sh -j results/jmeter.log -p tests/jmeter.properties -t tests/my_test.jmx -n -l results/my_test.jtl -Jserver=google.com
