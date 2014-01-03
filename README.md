@@ -4,7 +4,7 @@ Downloads [JMeter](http://jmeter.apache.org/) and [JMeter plugins](http://jmeter
 
 ## Dependencies
 
- - Python to install JMeter
+ - Python 2.7 to install JMeter
  - Java to run JMeter
 
 ## Why?
@@ -192,3 +192,4 @@ After you build, you'll see the graphs show up on the Build screen. Clicking on 
 
 - Compare downloaded files against checksums
 - Windows compatibility
+- Python 2.6 and 3.3 compatibility
