@@ -1,6 +1,19 @@
 # JMeter Bootstrap
 
-Downloads [JMeter](http://jmeter.apache.org/) and [JMeter plugins](http://jmeter-plugins.org/) and demonstrates usage via examples
+Downloads [JMeter](http://jmeter.apache.org/) and [JMeter plugins](http://jmeter-plugins.org/) and demonstrates usage via examples. Suitable for use as a submodule in other projects that contain JMeter load tests
+
+## Dependencies
+
+ - Python to install JMeter
+ - Java to run JMeter
+
+## Why?
+
+To encourage the creation and maintenance of load tests, we seek to reduce friction in the getting-started process.
+
+Working with multiple people and projects on load testing, the need became apparent for a simple way to set up JMeter with Plugins, include sample tests, and promote best practices.
+A project such as this can shorten the time to get other developers started. In addition, it simplifies load test job configuration in a continuous integration environment.
+
 
 ## Install JMeter and JMeter plugins
 
@@ -70,7 +83,7 @@ Open `my_test_with_parameters.jmx`, like so:
 $ apache-jmeter-2.10/bin/jmeter.sh -t tests/my_test_with_parameters.jmx
 ```
 
-In the GUI, click on the `HTTP Request Defaults` node and look at the `Server Name or IP` Field. You'll see this: `${__P(server, "localhost")}`
+In the GUI, click on the `HTTP Request Defaults` node and look at the `Server Name or IP` Field. You'll see this: `${__P(server, localhost)}`
 
 The `${__P()}` is a JMeter parameter. The value in quotes is the default, should no value be supplied in a properties file or command line.
 
@@ -89,6 +102,39 @@ $ apache-jmeter-2.10/bin/jmeter.sh -t tests/my_test_with_parameters.jmx -Jserver
 ```
 
 This will run the test against the `my.test.server` URL, with 100 concurrent users, repeating 1000 times.
+
+## Using jmeter-bootstrap as a Git Submodule
+
+To use jmeter-bootstrap as a [Git submodule](http://git-scm.com/book/en/Git-Tools-Submodules) in your own test project, add the repo as a submodule.
+
+Assuming you have a project with this structure:
+
+```
+/my-project
+  /tests
+  /results
+```
+
+Issue:
+
+```git submodule add https://github.com/marcesher/jmeter-bootstrap.git```
+
+This will pull the jmeter project as a git submodule into your own project. To run the JMeter installer:
+
+```
+$ python jmeter-bootstrap/bin/install_jmeter.py
+```
+
+Which will pull JMeter into your project, resulting in a directory structure like:
+
+```
+/my-project
+  /apache-jmeter-2.10
+  /tests
+  /results
+```
+
+Then, open
 
 
 ## Jenkins Jobs
@@ -116,7 +162,7 @@ In the configuration below, I'll use simple paths to the jmeter-bootstrap locati
 You can use a single `Execute Shell` step to do a one-time install of JMeter and the JMeter plugins, run your load tests, and emit graphs. It will look something like this:
 
 ```
-python jmeter-bootstrap/bin/install_jmeter.sh
+python jmeter-bootstrap/bin/install_jmeter.py
 rm -rf results
 mkdir results
 
@@ -131,11 +177,11 @@ jmeter-bootstrap/apache-jmeter-2.10/bin/jmeter.sh -j results/jmeter.log -p tests
 
 I typically use something like `results/*.png, results/*.html, results/*.csv` as the pattern
 
-1. Create Image Gallery
+2. Create Image Gallery
 
 I use "Archived Image Gallery" and include `**/results/*.png` as the pattern
 
-1. Publish performance test result report
+3. Publish performance test result report
 
 I add a `JMeter Report`, then for Report Files, I use `results/*.jtl`
 
