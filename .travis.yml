@@ -5,4 +5,4 @@ python:
 before_script:
   - chmod 755 bin/install_jmeter.py
 script:
-  - bin/install_jmeter.py
+  - python bin/install_jmeter.py
