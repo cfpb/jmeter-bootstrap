@@ -3,4 +3,4 @@ python:
   - "2.6"
   - "2.7"
 
-script: bin/install_jmeter
+script: bin/install_jmeter.py
