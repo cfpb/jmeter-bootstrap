@@ -187,3 +187,8 @@ I add a `JMeter Report`, then for Report Files, I use `results/*.jtl`
 
 
 After you build, you'll see the graphs show up on the Build screen. Clicking on `Performance Report` will take you to a historical report showing you performance over time.
+
+## Roadmap
+
+- Compare downloaded files against checksums
+- Windows compatibility
