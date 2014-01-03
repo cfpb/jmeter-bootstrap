@@ -136,8 +136,6 @@ Which will pull JMeter into your project, resulting in a directory structure lik
   /results
 ```
 
-Then, open
-
 
 ## Jenkins Jobs
 
