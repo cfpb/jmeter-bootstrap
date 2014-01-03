@@ -1,11 +1,13 @@
 # JMeter Bootstrap
 
+[![Build Status](https://travis-ci.org/marcesher/jmeter-bootstrap.png)](https://travis-ci.org/marcesher/jmeter-bootstrap)
+
 Downloads [JMeter](http://jmeter.apache.org/) and [JMeter plugins](http://jmeter-plugins.org/) and demonstrates usage via examples. Suitable for use as a submodule in other projects that contain JMeter load tests
 
 ## Dependencies
 
  - Python 2.7 to install JMeter
- - Java to run JMeter
+ - Java 1.5+ to run JMeter
 
 ## Why?
 
