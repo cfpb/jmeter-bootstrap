@@ -20,7 +20,7 @@ A project such as this can shorten the time to get other developers started. In 
 ## Install JMeter and JMeter plugins
 
 ```
-$ python bin/install_jmeter.py
+$ python bin/JMeterInstaller.py
 ```
 
 The installer will also install several JMeter Plugins, which can be used directly or within a continuous integration server such as Jenkins
@@ -124,7 +124,7 @@ Issue:
 This will pull the jmeter project as a git submodule into your own project. To run the JMeter installer:
 
 ```
-$ python jmeter-bootstrap/bin/install_jmeter.py
+$ python jmeter-bootstrap/bin/JMeterInstaller.py
 ```
 
 Which will pull JMeter into your project, resulting in a directory structure like:
@@ -164,7 +164,7 @@ In the configuration below, I'll use simple paths to the jmeter-bootstrap locati
 You can use a single `Execute Shell` step to do a one-time install of JMeter and the JMeter plugins, run your load tests, and emit graphs. It will look something like this:
 
 ```
-python jmeter-bootstrap/bin/install_jmeter.py
+python jmeter-bootstrap/bin/JMeterInstaller.py
 rm -rf results
 mkdir results
 
@@ -192,6 +192,5 @@ After you build, you'll see the graphs show up on the Build screen. Clicking on 
 
 ## Roadmap
 
-- Compare downloaded files against checksums
 - Windows compatibility
 - Python 2.6 and 3.3 compatibility
