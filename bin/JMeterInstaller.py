@@ -54,18 +54,20 @@ class JMeterInstaller(object):
             print("JMeter directory [%s] exists... skipping" % self.jmeter_dir)
 
     def install_plugins(self):
-        if not os.path.exists(self.jmeter_dir + "lib/ext/JMeterPlugins-Standard.jar"):
-            print("Installing JMeter Plugins")
+        print("Installing JMeter Plugins")
 
-            self.get_file("http://jmeter-plugins.org/downloads/file/JMeterPlugins-Standard-1.1.2.zip", "jmp-standard.zip")
-            self.get_file("http://jmeter-plugins.org/downloads/file/JMeterPlugins-Extras-1.1.2.zip", "jmp-extras.zip")
-            self.get_file("http://jmeter-plugins.org/downloads/file/JMeterPlugins-ExtrasLibs-1.1.2.zip", "jmp-extraslibs.zip")
+        base_url = 'http://jmeter-plugins.org/downloads/file/'
+        plugins = [['JMeterPlugins-Standard', '1.1.2', 'jmp-standard'],
+                   ['JMeterPlugins-Extras', '1.1.2', 'jmp-extras'],
+                   ['JMeterPlugins-ExtrasLibs', '1.1.2', 'jmp-extraslibs']]
 
-            self.unzip_plugin("jmp-standard.zip", "jmp-standard")
-            self.unzip_plugin("jmp-extras.zip", "jmp-extras")
-            self.unzip_plugin("jmp-extraslibs.zip", "jmp-extraslibs")
-        else:
-            print("JMeter plugins appear to exist in %slib/ext" % self.jmeter_dir)
+        for plugin in plugins:
+            if not os.path.exists(self.jmeter_dir + "lib/ext/" + plugin[0] + ".jar"):
+                self.get_file(base_url + plugin[0] + "-" + plugin[1] + ".zip", plugin[2] + ".zip")
+
+                self.unzip_plugin(plugin[2] + ".zip", plugin[2])
+            else:
+                print("%s appear to exist in %slib/ext" % (plugin[0], self.jmeter_dir))
 
     def install(self):
         try:
