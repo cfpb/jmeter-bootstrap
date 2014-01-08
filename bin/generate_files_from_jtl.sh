@@ -2,7 +2,7 @@
 #example: ./generate_files_from_jtl.sh my_test
 # See http://jmeter-plugins.org/wiki/JMeterPluginsCMD/ for documentation
 
-cmd="java -jar apache-jmeter-2.10/lib/ext/CMDRunner.jar --tool Reporter --input-jtl results/$1.jtl"
+cmd="java -jar apache-jmeter-2.11/lib/ext/CMDRunner.jar --tool Reporter --input-jtl results/$1.jtl"
 
 png="$cmd --generate-png"
 $cmd --generate-csv results/$1_aggregate-report.csv --plugin-type AggregateReport

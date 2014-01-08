@@ -4,17 +4,18 @@ import os, sys, hashlib, urllib2, tempfile, zipfile, distutils.core
 class JMeterInstaller(object):
 
     def __init__(self):
-        self.jmeter_version = "2.10"
+        self.jmeter_version = "2.11"
         self.jmeter_dir = "apache-jmeter-%s/" % self.jmeter_version
         self.download_dir = tempfile.mkdtemp()
-        self.md5map = {"jmeter.zip": "c021a874fc08e08d6e017e342d3db2b6",
+        self.md5map = {"jmeter.zip": "14b6dfc04f912e45b482e4563fdf1c3a",
                        "jmp-standard.zip": "bee82c91e06d9eee81bf61618e48066e",
                        "jmp-extras.zip": "f908b5699a9f30e0745740ca11db4ef7",
                        "jmp-extraslibs.zip": "ec2e43400f13de1b2e68d05e7721ac4a"}
 
     def clean(self):
-        print("Removing %s" % self.download_dir)
-        distutils.dir_util.remove_tree(self.download_dir)
+        if os.path.exists(self.download_dir):
+            print("Removing %s" % self.download_dir)
+            distutils.dir_util.remove_tree(self.download_dir)
 
     def get_file(self, url, local_path):
         print("Downloading " + url)
@@ -77,7 +78,7 @@ class JMeterInstaller(object):
             return os.path.exists(self.jmeter_dir)
         except:
             self.clean()
-            print "Unexpected error:", sys.exc_info()[0]
+            print "Unexpected error:", sys.exc_info()
             raise
 
 
