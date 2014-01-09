@@ -7,10 +7,10 @@ class JMeterInstaller(object):
         self.jmeter_version = "2.11"
         self.jmeter_dir = "apache-jmeter-%s/" % self.jmeter_version
         self.download_dir = tempfile.mkdtemp()
-        self.md5map = {"jmeter.zip": "14b6dfc04f912e45b482e4563fdf1c3a",
-                       "jmp-standard.zip": "bee82c91e06d9eee81bf61618e48066e",
-                       "jmp-extras.zip": "f908b5699a9f30e0745740ca11db4ef7",
-                       "jmp-extraslibs.zip": "ec2e43400f13de1b2e68d05e7721ac4a"}
+        self.hashes = {"jmeter.zip": "c7efb7d1e950caeb5a5720bf0b2445893ca8fe61",
+                       "jmp-standard.zip": "5df124bc039a3cef291a3e9054110a1ff1ae8441",
+                       "jmp-extras.zip": "1f6ac7c3200a5d9f42f55217bf0c287fdbba485c",
+                       "jmp-extraslibs.zip": "1087fdf9506ecfed202bea7625a227f6bdc14918"}
 
     def clean(self):
         if os.path.exists(self.download_dir):
@@ -24,10 +24,10 @@ class JMeterInstaller(object):
             f.write(stream.read())
 
         with(open(f.name, "rb")) as written:
-            md5 = hashlib.md5(written.read()).hexdigest()
-            if self.md5map[local_path] != md5:
+            hash = hashlib.sha1(written.read()).hexdigest()
+            if self.hashes[local_path] != hash:
                 self.clean()
-                raise Exception("MD5 mismatch. Expected %s but received %s" % (self.md5map[local_path], md5))
+                raise Exception("File hash mismatch. Expected %s but received %s" % (self.hashes[local_path], hash))
 
 
 
