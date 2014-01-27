@@ -6,7 +6,7 @@ class JMeterInstaller(object):
     def __init__(self):
         self.jmeter_version = "2.11"
         self.jmeter_dir = "apache-jmeter-%s/" % self.jmeter_version
-        self.download_dir = tempfile.mkdtemp()
+        self.download_dir = tempfile.mkdtemp() + "/"
         self.hashes = {"jmeter.zip": "c7efb7d1e950caeb5a5720bf0b2445893ca8fe61",
                        "jmp-standard.zip": "5df124bc039a3cef291a3e9054110a1ff1ae8441",
                        "jmp-extras.zip": "1f6ac7c3200a5d9f42f55217bf0c287fdbba485c",
