@@ -1,6 +1,6 @@
 # JMeter Bootstrap
 
-[![Build Status](https://travis-ci.org/marcesher/jmeter-bootstrap.png)](https://travis-ci.org/marcesher/jmeter-bootstrap)
+[![Build Status](https://travis-ci.org/cfpb/jmeter-bootstrap.png)](https://travis-ci.org/cfpb/jmeter-bootstrap)
 
 Downloads [JMeter](http://jmeter.apache.org/) and [JMeter plugins](http://jmeter-plugins.org/) and demonstrates usage via examples. Suitable for use as a submodule in other projects that contain JMeter load tests
 
@@ -119,7 +119,7 @@ Assuming you have a project with this structure:
 
 Issue:
 
-```git submodule add https://github.com/marcesher/jmeter-bootstrap.git```
+```git submodule add https://github.com/cfpb/jmeter-bootstrap.git```
 
 This will pull the jmeter project as a git submodule into your own project. To run the JMeter installer:
 
