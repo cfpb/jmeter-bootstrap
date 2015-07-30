@@ -4,10 +4,10 @@ import os, sys, hashlib, urllib2, tempfile, zipfile, distutils.core
 class JMeterInstaller(object):
 
     def __init__(self):
-        self.jmeter_version = "2.12"
+        self.jmeter_version = "2.13"
         self.jmeter_dir = "apache-jmeter-%s/" % self.jmeter_version
         self.download_dir = tempfile.mkdtemp() + "/"
-        self.hashes = {"jmeter.zip": "737f33e1164f636d442f26fa4028a3aad7d579b5",
+        self.hashes = {"jmeter.zip": "627cc8b0a6a425bd9722a5cc1911f3fd6644cd0e",
                        "jmp-standard.zip": "5df124bc039a3cef291a3e9054110a1ff1ae8441",
                        "jmp-extras.zip": "1f6ac7c3200a5d9f42f55217bf0c287fdbba485c",
                        "jmp-extraslibs.zip": "1087fdf9506ecfed202bea7625a227f6bdc14918"}
@@ -44,7 +44,7 @@ class JMeterInstaller(object):
         if not os.path.exists(self.jmeter_dir):
             print("Download JMeter")
 
-            jmeter_file = "http://apache.mirrors.tds.net/jmeter/binaries/apache-jmeter-%s.zip" % self.jmeter_version
+            jmeter_file = "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-%s.zip" % self.jmeter_version
             self.get_file(jmeter_file, "jmeter.zip")
 
             with(zipfile.ZipFile(self.download_dir + "jmeter.zip", "r")) as z:

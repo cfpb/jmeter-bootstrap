@@ -6,5 +6,5 @@ before_script:
 script:
   - nosetests -s
   - rm -rf results && mkdir results
-  - apache-jmeter-2.12/bin/jmeter.sh -j results/jmeter.log -p tests/jmeter.properties -t tests/my_test_with_parameters.jmx -n -l results/my_test_with_parameters.jtl -Jserver=google.com
+  - apache-jmeter-2.13/bin/jmeter.sh -j results/jmeter.log -p tests/jmeter.properties -t tests/my_test_with_parameters.jmx -n -l results/my_test_with_parameters.jtl -Jserver=google.com
   - bin/generate_files_from_jtl.sh my_test_with_parameters
