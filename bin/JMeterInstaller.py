@@ -4,7 +4,7 @@ import os, sys, hashlib, urllib2, tempfile, zipfile, distutils.core
 class JMeterInstaller(object):
 
     def __init__(self):
-        self.jmeter_version = "2.13"
+        self.jmeter_version = "3.0"
         self.jmeter_dir = "apache-jmeter-%s/" % self.jmeter_version
         self.download_dir = tempfile.mkdtemp() + "/"
         self.hashes = {"jmeter.zip": "627cc8b0a6a425bd9722a5cc1911f3fd6644cd0e",
