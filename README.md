@@ -28,7 +28,7 @@ The installer will also install several JMeter Plugins, which can be used direct
 ## Open Tests in JMeter
 
 ```
-apache-jmeter-2.13/bin/jmeter.sh -t tests/my_test.jmx
+apache-jmeter-3.0/bin/jmeter.sh -t tests/my_test.jmx
 ```
 
 This will load the JMeter GUI. This very simple test hits http://localhost 1 time, with 1 user
@@ -44,7 +44,7 @@ Especially in a continuous integration server, you'll want to run JMeter tests "
 
 ```
 rm -rf results && mkdir results
-apache-jmeter-2.13/bin/jmeter.sh -j results/jmeter.log -p tests/jmeter.properties -t tests/my_test.jmx -n -l results/my_test.jtl
+apache-jmeter-3.0/bin/jmeter.sh -j results/jmeter.log -p tests/jmeter.properties -t tests/my_test.jmx -n -l results/my_test.jtl
 ```
 
 Let's break this down:
@@ -82,7 +82,7 @@ JMeter provides the ability to parameterize tests, such that default values can 
 Open `my_test_with_parameters.jmx`, like so:
 
 ```
-$ apache-jmeter-2.13/bin/jmeter.sh -t tests/my_test_with_parameters.jmx
+$ apache-jmeter-3.0/bin/jmeter.sh -t tests/my_test_with_parameters.jmx
 ```
 
 In the GUI, click on the `HTTP Request Defaults` node and look at the `Server Name or IP` Field. You'll see this: `${__P(server, localhost)}`
@@ -94,13 +94,13 @@ If you update the `jmeter.properties` file with a value: `server=my.server`, whe
 To override that at the command line, use JMeter's `-J` flag, which takes the form `-J[param_name]=value`:
 
 ```
-$ apache-jmeter-2.13/bin/jmeter.sh -t tests/my_test_with_parameters.jmx -Jserver=my.test.server
+$ apache-jmeter-3.0/bin/jmeter.sh -t tests/my_test_with_parameters.jmx -Jserver=my.test.server
 ```
 
 In the JMeter GUI, click on the `Thread Group` node. Notice a parameter is used for both Threads and Loop Count. To override those at the command line:
 
 ```
-$ apache-jmeter-2.13/bin/jmeter.sh -t tests/my_test_with_parameters.jmx -Jserver=my.test.server -Jthreads=100 -Jloopcount=1000
+$ apache-jmeter-3.0/bin/jmeter.sh -t tests/my_test_with_parameters.jmx -Jserver=my.test.server -Jthreads=100 -Jloopcount=1000
 ```
 
 This will run the test against the `my.test.server` URL, with 100 concurrent users, repeating 1000 times.
@@ -131,7 +131,7 @@ Which will pull JMeter into your project, resulting in a directory structure lik
 
 ```
 /my-project
-  /apache-jmeter-2.13
+  /apache-jmeter-3.0
   /tests
   /results
 ```
@@ -166,7 +166,7 @@ python jmeter-bootstrap/bin/JMeterInstaller.py
 rm -rf results
 mkdir results
 
-jmeter-bootstrap/apache-jmeter-2.13/bin/jmeter.sh -j results/jmeter.log -p tests/jmeter.properties -t tests/some_test.jmx -n -l results/some_test.jtl
+jmeter-bootstrap/apache-jmeter-3.0/bin/jmeter.sh -j results/jmeter.log -p tests/jmeter.properties -t tests/some_test.jmx -n -l results/some_test.jtl
 
 ./jmeter-bootstrap/bin/generate_files_from_jtl.sh some_test
 ```
