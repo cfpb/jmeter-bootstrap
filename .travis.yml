@@ -3,6 +3,7 @@ python:
   - "2.7"
 env: JMETER_PATH=./
 before_script:
+  - chmod +x bin/generate_files_from_jtl.sh
   - chmod +x bin/JMeterInstaller.py
 script:
   - nosetests -s
